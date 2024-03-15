@@ -26,6 +26,8 @@ public class DialogueManager : MonoBehaviour
 
     private float textSpeed = 0.05f;
 
+    [SerializeField] GameObject popUp;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -57,7 +59,7 @@ public class DialogueManager : MonoBehaviour
         continueButton.SetActive(false);
         if (sentences.Count == 0)
         {
-            isStoryFinished = true;
+            EndDialogueSession();
             return;
         }
         currentLine += 1;
@@ -81,6 +83,8 @@ public class DialogueManager : MonoBehaviour
             curDialogueBox.text_box.text += letter;
             yield return new WaitForSeconds(GetTextSpeed());  // Wait some time for the subsequent characters to be typed out!
         }
+
+        continueButton.SetActive(true);
     }
 
     public void ClearDialogue()
@@ -123,4 +127,11 @@ public class DialogueManager : MonoBehaviour
         continueButton.SetActive(toggle);
     }
 
+    // Go back to menu, and reset properties
+    public void EndDialogueSession()
+    {
+        curDialogueBox.box.transform.parent.gameObject.SetActive(false);
+        popUp.SetActive(true);
+        isStoryFinished = true;
+    }
 }
