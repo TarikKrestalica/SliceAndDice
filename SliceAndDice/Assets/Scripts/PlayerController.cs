@@ -46,4 +46,12 @@ public class PlayerController : MonoBehaviour
             this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "BreakableWall")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
