@@ -21,6 +21,21 @@ public class GameManager : MonoBehaviour
 
     private LotteryMachine m_lotteryMachine;
 
+    public static PlayerController player
+    {
+        get
+        {
+            if (gameManager.m_player == null)
+            {
+                gameManager.m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            }
+
+            return gameManager.m_player;
+        }
+    }
+
+    private PlayerController m_player;
+
     private void Awake()
     {
         if(gameManager != null)

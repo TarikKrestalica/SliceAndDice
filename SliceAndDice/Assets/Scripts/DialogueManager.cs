@@ -130,8 +130,8 @@ public class DialogueManager : MonoBehaviour
     // Go back to menu, and reset properties
     public void EndDialogueSession()
     {
-        curDialogueBox.box.transform.parent.gameObject.SetActive(false);
         popUp.SetActive(true);
+        curDialogueBox.box.gameObject.SetActive(false);
         isStoryFinished = true;
     }
 }
