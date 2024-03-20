@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
     // Speed and rotation controls
     [Range(0, 10f)]
     [SerializeField] float speed;
-    [Range(0, 180f)]
-    [SerializeField] float rotationSpeed;
 
     // Player movement
     Vector3 vertVel;
@@ -25,26 +23,16 @@ public class PlayerController : MonoBehaviour
 
     void RunMovementLogic()
     {
-        vertVel = this.transform.forward * Input.GetAxis("Vertical");
+        vertVel = -this.transform.forward * Input.GetAxis("Vertical");
         transform.Translate(vertVel * speed * Time.deltaTime, Space.World);
         
     }
-
-    /*
-    void RunRotationLogic()
-    {
-        if (combVel != Vector3.zero && Input.GetAxis("Vertical") > 0)
-        {
-            Quaternion lookRotation = Quaternion.LookRotation(combVel, Vector3.up);
-            this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-        }
-    }
-    */
 
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "BreakableWall")
         {
+            Debug.Log("Hit it");
             Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
             if (!obstacle)
             {

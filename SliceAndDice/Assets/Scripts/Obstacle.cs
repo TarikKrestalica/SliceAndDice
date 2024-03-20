@@ -29,6 +29,7 @@ public class Obstacle : MonoBehaviour
             return;
         }
 
+        Debug.Log("Continue on!");
         progressBar.SetUpTheSlider();
     }
 }

@@ -131,7 +131,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogueSession()
     {
         popUp.SetActive(true);
-        curDialogueBox.box.gameObject.SetActive(false);
+        curDialogueBox.box.transform.parent.gameObject.SetActive(false);
         isStoryFinished = true;
     }
 }
