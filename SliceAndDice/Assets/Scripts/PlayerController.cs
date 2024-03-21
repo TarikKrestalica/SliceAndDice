@@ -32,7 +32,6 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "BreakableWall")
         {
-            Debug.Log("Hit it");
             Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
             if (!obstacle)
             {
@@ -55,5 +54,10 @@ public class PlayerController : MonoBehaviour
     public Obstacle GetCurrentObstacle()
     {
         return curObstacle;
+    }
+
+    public void GoToNextPoint()
+    {
+        GameManager.player.transform.position = curObstacle.GetTeleportationPoint().transform.position;
     }
 }

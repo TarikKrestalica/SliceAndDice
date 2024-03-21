@@ -9,6 +9,8 @@ public class Obstacle : MonoBehaviour
     [Range(200f, 2000f)]
     [SerializeField] float fillSpeed;
 
+    [SerializeField] GameObject teleportationPoint;
+
     public float GetHealthValue()
     {
         return healthValue;
@@ -29,8 +31,12 @@ public class Obstacle : MonoBehaviour
             return;
         }
 
-        Debug.Log("Continue on!");
         progressBar.SetUpTheSlider();
+    }
+
+    public GameObject GetTeleportationPoint()
+    {
+        return teleportationPoint;
     }
 }
 

@@ -19,7 +19,7 @@ public class progressBar : MonoBehaviour
     {
         if (!slider || slider.value == 0)
         {
-            Debug.Log("Destruction Activated!");
+            GameManager.player.GoToNextPoint();
             Destroy(this.transform.parent.parent.gameObject);
             return;
         }
