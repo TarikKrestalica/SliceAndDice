@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     void RunMovementLogic()
     {
         vertVel = -this.transform.forward * Input.GetAxis("Vertical");
+        if (Input.GetAxis("Vertical") < 0)
+            return;
+
         transform.Translate(vertVel * speed * Time.deltaTime, Space.World);
         
     }
