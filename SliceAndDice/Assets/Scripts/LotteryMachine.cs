@@ -12,9 +12,7 @@ public class LotteryMachine : Obstacle
     void Start()
     {
         fillSpeed = rnd.Next(1000, 2000);
-        Debug.Log(fillSpeed);
         healthValue = rnd.Next(100, 400);
-        Debug.Log(healthValue);
     }
 
     // Update is called once per frame

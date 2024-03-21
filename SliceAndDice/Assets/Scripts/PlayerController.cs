@@ -7,27 +7,55 @@ public class PlayerController : MonoBehaviour
     // Speed and rotation controls
     [Range(0, 10f)]
     [SerializeField] float speed;
+    [Range(0, 10000f)]
+    [SerializeField] float jumpPower;
 
     // Player movement
     Vector3 vertVel;
+    Vector3 horVel;
+    Vector3 combVel;
 
     // Obstacle Collision
     private Obstacle curObstacle;
+
+    private Rigidbody rigidbody;
+
+    [SerializeField] private RectTransform groundCheckTransform;
+    [SerializeField] private LayerMask groundMask;
+
+    private void Start()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+        if (!rigidbody)
+        {
+            Debug.LogError("No rigidbody attached");
+            return;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
         RunMovementLogic();
+        RunJumpingLogic();
         
     }
 
     void RunMovementLogic()
     {
-        vertVel = -this.transform.forward * Input.GetAxis("Vertical");
-        if (Input.GetAxis("Vertical") < 0)
-            return;
+        horVel = -this.transform.right * Input.GetAxis("Horizontal");
+        if (Input.GetAxis("Vertical") >= 0)
+        {
+            vertVel = -this.transform.forward * Input.GetAxis("Vertical");
+        }
 
-        transform.Translate(vertVel * speed * Time.deltaTime, Space.World);
+        combVel = horVel + vertVel;
+        if(combVel.magnitude > 1)
+        {
+            combVel = combVel.normalized;
+        }
+
+        transform.Translate(combVel * speed * Time.deltaTime, Space.World);
         
     }
 
@@ -63,4 +91,23 @@ public class PlayerController : MonoBehaviour
     {
         GameManager.player.transform.position = curObstacle.GetTeleportationPoint().transform.position;
     }
+
+    // Fix and tamper with
+    void RunJumpingLogic()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!IsGroundedOnPlatform() || rigidbody.velocity.y != 0)
+                return;
+
+            rigidbody.velocity = Vector3.up * jumpPower * Time.deltaTime;
+        }
+    }
+
+
+    public bool IsGroundedOnPlatform()
+    {
+        return Physics.CheckBox(groundCheckTransform.position, groundCheckTransform.position, Quaternion.identity, groundMask);
+    }
+
 }

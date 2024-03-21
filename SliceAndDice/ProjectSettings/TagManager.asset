@@ -7,11 +7,12 @@ TagManager:
   - BreakableWall
   - LotteryMachine
   - Goblin Pop Up
+  - Goblin
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

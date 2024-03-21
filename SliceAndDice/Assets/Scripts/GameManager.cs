@@ -36,6 +36,21 @@ public class GameManager : MonoBehaviour
 
     private PlayerController m_player;
 
+    public static BehaviorManager behaviorManager
+    {
+        get
+        {
+            if (gameManager.m_behaviorManager == null)
+            {
+                gameManager.m_behaviorManager = GameObject.FindGameObjectWithTag("Goblin").GetComponent<BehaviorManager>();
+            }
+
+            return gameManager.m_behaviorManager;
+        }
+    }
+
+    private BehaviorManager m_behaviorManager;
+
     private void Awake()
     {
         if(gameManager != null)

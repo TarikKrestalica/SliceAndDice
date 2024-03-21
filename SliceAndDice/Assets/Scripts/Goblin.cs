@@ -10,6 +10,8 @@ public class Goblin : MonoBehaviour
     [SerializeField] private Texture nonHoveredSprite;
     [SerializeField] private Texture hoveredSprite;
 
+    // Choose 
+
     private void Awake()
     {
         m_rawImage = GetComponent<RawImage>();
