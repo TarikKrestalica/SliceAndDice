@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] float healthValue;
+    [SerializeField] protected float healthValue;
     [Range(200f, 2000f)]
-    [SerializeField] float fillSpeed;
+    [SerializeField] protected float fillSpeed;
 
     [SerializeField] GameObject teleportationPoint;
 
