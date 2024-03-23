@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.tag == "BreakableWall")
         {
+            GameManager.goblin.SetIconEnabled(true);
             Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
             if (!obstacle)
             {
@@ -70,14 +71,15 @@ public class PlayerController : MonoBehaviour
                 return;
             }
 
-            if(curObstacle == obstacle)
-            {
-                Debug.Log("Already have collided with this object");
-                return;
-            }
-
             curObstacle = obstacle;
-            curObstacle.SetUpSliderValues();
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.tag == "Breakable Wall")
+        {
+            GameManager.goblin.SetIconEnabled(false);
         }
     }
 

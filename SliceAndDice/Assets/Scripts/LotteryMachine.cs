@@ -14,10 +14,4 @@ public class LotteryMachine : Obstacle
         fillSpeed = rnd.Next(1000, 2000);
         healthValue = rnd.Next(100, 400);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
