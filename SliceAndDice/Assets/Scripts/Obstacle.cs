@@ -5,11 +5,9 @@ using UnityEngine.UI;
 
 public class Obstacle : MonoBehaviour
 {
-    [SerializeField] protected float healthValue;
+    [SerializeField] float healthValue;
     [Range(200f, 2000f)]
-    [SerializeField] protected float fillSpeed;
-
-    [SerializeField] GameObject teleportationPoint;
+    [SerializeField] float fillSpeed;
 
     public float GetHealthValue()
     {
@@ -32,11 +30,6 @@ public class Obstacle : MonoBehaviour
         }
 
         progressBar.SetUpTheSlider();
-    }
-
-    public GameObject GetTeleportationPoint()
-    {
-        return teleportationPoint;
     }
 }
 
