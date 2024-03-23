@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    public ItemProbabilityDistributor itemProbabilityDistributor;
 
     public static LotteryMachine lotteryMachine
     {
@@ -36,6 +37,21 @@ public class GameManager : MonoBehaviour
 
     private PlayerController m_player;
 
+    public static Goblin goblin
+    {
+        get
+        {
+            if (gameManager.m_goblin == null)
+            {
+                gameManager.m_goblin = GameObject.FindGameObjectWithTag("Goblin").GetComponent<Goblin>();
+            }
+
+            return gameManager.m_goblin;
+        }
+    }
+
+    private Goblin m_goblin;
+
     public static BehaviorManager behaviorManager
     {
         get
@@ -60,6 +76,26 @@ public class GameManager : MonoBehaviour
 
         gameManager = this;
         DontDestroyOnLoad(gameManager);
+        itemProbabilityDistributor = GetComponent<ItemProbabilityDistributor>();
+        if (!itemProbabilityDistributor)
+        {
+            Debug.LogError("Randomization between items can't happen. Please try again!");
+            return;
+        }
+
+        itemProbabilityDistributor.enabled = false;
     }
 
+
+    private void Update()
+    {
+        if (!itemProbabilityDistributor.enabled)
+            return;
+
+        if (itemProbabilityDistributor.IsComplete())
+        {
+            player.GetCurrentObstacle().SetUpSliderValues();
+            itemProbabilityDistributor.enabled = false;
+        }
+    }
 }

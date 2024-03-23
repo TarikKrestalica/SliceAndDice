@@ -20,6 +20,7 @@ public class progressBar : MonoBehaviour
         if (!slider || slider.value == 0)
         {
             GameManager.player.GoToNextPoint();
+            GameObject.FindGameObjectWithTag("ItemDisplay").SetActive(false);
             Destroy(this.transform.parent.parent.gameObject);
             return;
         }

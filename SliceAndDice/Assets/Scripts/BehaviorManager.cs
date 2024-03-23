@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class BehaviorManager : MonoBehaviour
 {
-    private int compliments = 0;
-    private int complaints = 0;
+    private bool isComplaint = false;
+    private bool isCompliment = false;
 
     public void AddCompliment()
     {
-        compliments += 1;
+        isComplaint = false;
+        isCompliment = true;
     }
 
     public void AddComplaint()
     {
-        complaints += 1;
-    }
-
-    public int GetNumberOfCompliments()
-    {
-        return compliments;
-    }
-
-    public int GetNumberOfComplaints()
-    {
-        return complaints;
+        isComplaint = true;
+        isCompliment = false;
     }
 }
