@@ -25,7 +25,7 @@ public class progressBar : MonoBehaviour
         }
 
         // Space bar near area
-        if (slider.value > slider.minValue && Input.GetKeyDown(KeyCode.Space))
+        if (slider.value > slider.minValue && Input.GetKeyDown(KeyCode.RightShift))
         {
             slider.value -= fillSpeed * Time.deltaTime;
         }

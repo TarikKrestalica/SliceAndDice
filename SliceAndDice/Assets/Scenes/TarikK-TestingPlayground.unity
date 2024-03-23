@@ -222,7 +222,7 @@ Transform:
   m_GameObject: {fileID: 42925427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.9, y: 0, z: -291.1}
+  m_LocalPosition: {x: 15.9, y: 0, z: -276.7}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -619,7 +619,7 @@ Transform:
   m_GameObject: {fileID: 319613235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0, z: -239.3}
+  m_LocalPosition: {x: -0.3, y: 0, z: -232.7}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1115,11 +1115,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomDialogues:
   - sentences:
-    - Why are you such a spaz?
+    - Tough talk. But you should use that on the stuff in front of us, so that I
+      can go home.
   - sentences:
-    - Can you quit being a pest on my side!
+    - Oh, great.... You know how cramped it is in there, right?
   - sentences:
-    - I will throw you off a damn cliff!
+    - Sometimes I get so excited to get outta that bag. And then I have to put up
+      with this?
+  - sentences:
+    - If you're gonna be mean, you could at least try.
+  - sentences:
+    - I've seen you swing. Am I supposed to be scared?
+  - sentences:
+    - That's crazy... you know I wrote in all your books.
+  - sentences:
+    - Maybe try again when you're not out of breath.
+  - sentences:
+    - Oh no, my feelings... Wouldn't it be convenient if your machine got rigged?
+  - sentences:
+    - ... (His eyes show the fury of 1000 suns)
+  - sentences:
+    - Guess you wanna be on your own. Fine by me.
 --- !u!1 &525792016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,7 +1145,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 525792017}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: GroundCheckTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2228,7 +2244,7 @@ Transform:
   m_GameObject: {fileID: 1080227956}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0, z: -206}
+  m_LocalPosition: {x: -0.3, y: 0, z: -202.1}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2333,7 +2349,7 @@ Transform:
   m_GameObject: {fileID: 1097231736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.7, y: 0, z: -256.1}
+  m_LocalPosition: {x: -11.7, y: 0, z: -249.4}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3175,11 +3191,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomDialogues:
   - sentences:
-    - Looking sharp today!
+    - Gee, thanks. Maybe I can pull some strings for ya.
   - sentences:
-    - You are smooth like a wine of Merlin Caberot
+    - That's the kinda talk that'll rig the game.
   - sentences:
-    - You like smooth like a wine of Merlin Caberot
+    - All that slashing and you're still buttering me up? I'm impressed.
+  - sentences:
+    - If you keep it up, I might take over. Well, maybe not... but I'll slash in
+      spirit!
+  - sentences:
+    - I don't have any hair... but I appreciate it!
+  - sentences:
+    - Well now I'm glad I organized the bag for you.
+  - sentences:
+    - '*he high fives you*'
+  - sentences:
+    - You clean up pretty nice yourself.
+  - sentences:
+    - Y'know, it'd sure be a shame if someone made sure you'd do well on your next
+      spin.
+  - sentences:
+    - You come up with that one yourself, or did you steal it from someone? Doesn't
+      matter, thanks!
 --- !u!1 &1536348511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,7 +3312,7 @@ Transform:
   m_GameObject: {fileID: 1536348511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.9, y: 0, z: -189.9}
+  m_LocalPosition: {x: -10.9, y: 0, z: -186}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3428,7 +3461,7 @@ Transform:
   m_GameObject: {fileID: 1616539395}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.8, y: 0, z: -221.8}
+  m_LocalPosition: {x: 12.8, y: 0, z: -217.90001}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3638,7 +3671,7 @@ Transform:
   m_GameObject: {fileID: 1697226712}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: -275.7}
+  m_LocalPosition: {x: 0.5, y: 0, z: -265}
   m_LocalScale: {x: 10, y: 0, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4152,7 +4185,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2050127236
 MonoBehaviour:
@@ -4167,7 +4200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  jumpPower: 4000
+  jumpPower: 5000
   groundCheckTransform: {fileID: 525792017}
   groundMask:
     serializedVersion: 2

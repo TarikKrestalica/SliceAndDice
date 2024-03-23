@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!IsGroundedOnPlatform() || rigidbody.velocity.y != 0)
+            if (rigidbody.velocity.y != 0)
                 return;
 
             rigidbody.velocity = Vector3.up * jumpPower * Time.deltaTime;
