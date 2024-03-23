@@ -30,7 +30,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (textSpeed > 0.01f)
                 SetTextSpeed(textSpeed -= 0.01f);
@@ -130,8 +130,9 @@ public class DialogueManager : MonoBehaviour
     // Go back to menu, and reset properties
     public void EndDialogueSession()
     {
-        popUp.SetActive(true);
-        curDialogueBox.box.gameObject.SetActive(false);
+        GameManager.gameManager.itemProbabilityDistributor.enabled = true;
+        GameManager.gameManager.itemProbabilityDistributor.StartSelection();
+        curDialogueBox.box.transform.parent.gameObject.SetActive(false);
         isStoryFinished = true;
     }
 }
