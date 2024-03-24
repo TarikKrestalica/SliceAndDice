@@ -43,7 +43,7 @@ public class progressBar : MonoBehaviour
         }
 
 
-        fillSpeed = curRef.GetFillSpeed();
+        fillSpeed = FindObjectOfType<ItemProbabilityDistributor>().GetSelectedItem().fillSpeed;
         maxHealth = curRef.GetHealthValue();
         curHealth = maxHealth;
         slider.value = curHealth;

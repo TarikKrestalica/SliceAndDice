@@ -7,9 +7,11 @@ using TMPro;
 [System.Serializable]
 public class Item
 {
+    public string classifier;
     public string name;
     [Range(0, 100f)]
     public float probability;
+    public float fillSpeed;
 }
 
 [System.Serializable]
@@ -22,6 +24,7 @@ public class ItemDisplay
 public class ItemProbabilityDistributor : MonoBehaviour
 {
     [SerializeField] List<Item> items;
+    private Item itemChosen;
 
     [Header("Display")]
     public ItemDisplay itemDisplay;
@@ -33,19 +36,52 @@ public class ItemProbabilityDistributor : MonoBehaviour
 
     bool isRunning;
 
+    private System.Random rnd = new System.Random();
+
     IEnumerator ShuffleItems()
     {
         WaitForSeconds wait = new WaitForSeconds(timeDelay);
+        int i = 0;
         while (isRunning)
         {
-            for (int i = 0; i < items.Count; i++)
-            {
-                itemDisplay.textBox.text = items[i].name;
-                yield return wait;
-            }
+            yield return wait;
+            itemDisplay.textBox.text = items[i].name;
+            itemChosen = items[i];
+            i++;
+            i = i % items.Count;
         }
 
         StopAllCoroutines();
+    }
+
+    IEnumerator SetProbabilities()
+    {
+        string targetClassifier = "";
+        if (BehaviorManager.IsCompliment())
+            targetClassifier = "Compliment";
+        else
+            targetClassifier = "Complaint";
+
+        int i = 0;
+        while(i < items.Count)
+        {
+            if (items[i].classifier == targetClassifier)
+            {
+                items[i].probability += 10;
+                if (items[i].probability >= 100)
+                    items[i].probability = 100;
+            }
+            else
+            {
+                items[i].probability -= 10;
+                if (items[i].probability <= 0)
+                    items[i].probability = 0;
+            }
+
+            i++;
+
+            yield return null;
+        }
     }
 
     public void SetShuffleState(bool toggle)
@@ -66,7 +102,13 @@ public class ItemProbabilityDistributor : MonoBehaviour
     {
         itemDisplay.panel.gameObject.SetActive(true);
         SetShuffleState(true);
+        StartCoroutine(SetProbabilities());
         StartCoroutine(ShuffleItems());
+    }
+
+    public Item GetSelectedItem()
+    {
+        return itemChosen;
     }
 }
 

@@ -11,7 +11,6 @@ public class LotteryMachine : Obstacle
     // Start is called before the first frame update
     void Start()
     {
-        fillSpeed = rnd.Next(1000, 2000);
         healthValue = rnd.Next(100, 400);
     }
 }

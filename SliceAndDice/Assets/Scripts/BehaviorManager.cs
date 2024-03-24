@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BehaviorManager : MonoBehaviour
 {
-    private bool isComplaint = false;
-    private bool isCompliment = false;
+    private static bool isComplaint = false;
+    private static bool isCompliment = false;
 
     public void AddCompliment()
     {
@@ -17,5 +17,15 @@ public class BehaviorManager : MonoBehaviour
     {
         isComplaint = true;
         isCompliment = false;
+    }
+
+    public static bool IsCompliment()
+    {
+        return isCompliment;
+    }
+
+    public static bool IsComplaint()
+    {
+        return isComplaint;
     }
 }

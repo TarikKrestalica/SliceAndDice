@@ -2658,7 +2658,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 100
-  fillSpeed: 1500
   teleport: {fileID: 2063182548}
 --- !u!65 &981972691
 BoxCollider:
@@ -2894,7 +2893,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 100
-  fillSpeed: 1500
   teleport: {fileID: 2108966985}
 --- !u!65 &1045271853
 BoxCollider:
@@ -4671,21 +4669,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items:
-  - name: Hammer
-    probability: 10
-  - name: PickAxe
-    probability: 5
-  - name: Twig
-    probability: 80
-  - name: Wrench
+  - classifier: Compliment
+    name: Hammer
     probability: 50
-  - name: Pencil
-    probability: 80
+    fillSpeed: 1500
+  - classifier: Compliment
+    name: PickAxe
+    probability: 50
+    fillSpeed: 2750
+  - classifier: Complaint
+    name: Twig
+    probability: 50
+    fillSpeed: 60
+  - classifier: Compliment
+    name: Wrench
+    probability: 50
+    fillSpeed: 600
+  - classifier: Complaint
+    name: Pencil
+    probability: 50
+    fillSpeed: 50
   itemDisplay:
     panel: {fileID: 1000411551}
     textBox: {fileID: 883947918}
   stopButton: {fileID: 1909370041}
-  timeDelay: 0.05
+  timeDelay: 0.1
 --- !u!1 &1616539395
 GameObject:
   m_ObjectHideFlags: 0
@@ -5141,7 +5149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 100
-  fillSpeed: 1500
   teleport: {fileID: 26812439}
 --- !u!65 &1744164606
 BoxCollider:
@@ -5496,18 +5503,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2050127230}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1909370042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5654,7 +5649,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 100
-  fillSpeed: 1500
   teleport: {fileID: 2060689786}
 --- !u!65 &1977053218
 BoxCollider:
