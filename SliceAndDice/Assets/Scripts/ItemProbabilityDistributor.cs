@@ -10,7 +10,7 @@ public class Item
     public string classifier;
     public string name;
     [Range(0, 100f)]
-    public float probability;
+    public int probability;
     public float fillSpeed;
 }
 
@@ -24,7 +24,7 @@ public class ItemDisplay
 public class ItemProbabilityDistributor : MonoBehaviour
 {
     [SerializeField] List<Item> items;
-    private Item itemChosen;
+    [SerializeField] private Item itemChosen;
 
     [Header("Display")]
     public ItemDisplay itemDisplay;
@@ -37,19 +37,34 @@ public class ItemProbabilityDistributor : MonoBehaviour
     bool isRunning;
 
     private System.Random rnd = new System.Random();
+    int currentProbability = 50;
+    int selectedProbability = 50;
+
 
     IEnumerator ShuffleItems()
     {
+        currentProbability = FindMaxProbability();
         WaitForSeconds wait = new WaitForSeconds(timeDelay);
         int i = 0;
         while (isRunning)
         {
             yield return wait;
             itemDisplay.textBox.text = items[i].name;
-            itemChosen = items[i];
+            selectedProbability = rnd.Next(0, currentProbability + 1);
+            if (items[i].probability > 0 && items[i].probability >= selectedProbability)
+            {
+                itemChosen = items[i];
+            }
+
             i++;
             i = i % items.Count;
         }
+
+        if(itemChosen.name != itemDisplay.textBox.text)
+        {
+            itemChosen = FindItem(itemDisplay.textBox.text);
+        }
+
 
         StopAllCoroutines();
     }
@@ -79,9 +94,34 @@ public class ItemProbabilityDistributor : MonoBehaviour
             }
 
             i++;
-
             yield return null;
         }
+    }
+
+    int FindMaxProbability()
+    {
+        int max = 0;
+        for(int i = 0; i < items.Count; i++)
+        {
+            if(max <= items[i].probability)
+            {
+                max = items[i].probability;
+            }
+        }
+
+        return max;
+    }
+
+    Item FindItem(string name)
+    {
+        Item returned = null;
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].name == name)
+                returned = items[i];
+        }
+
+        return returned;
     }
 
     public void SetShuffleState(bool toggle)

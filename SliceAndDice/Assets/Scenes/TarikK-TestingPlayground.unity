@@ -4689,6 +4689,11 @@ MonoBehaviour:
     name: Pencil
     probability: 50
     fillSpeed: 50
+  itemChosen:
+    classifier: 
+    name: 
+    probability: 0
+    fillSpeed: 0
   itemDisplay:
     panel: {fileID: 1000411551}
     textBox: {fileID: 883947918}
