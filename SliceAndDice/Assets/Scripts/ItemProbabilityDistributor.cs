@@ -48,7 +48,6 @@ public class ItemProbabilityDistributor : MonoBehaviour
         int i = 0;
         while (isRunning)
         {
-            yield return wait;
             itemDisplay.textBox.text = items[i].name;
             selectedProbability = rnd.Next(0, currentProbability + 1);
             if (items[i].probability > 0 && items[i].probability >= selectedProbability)
@@ -58,10 +57,12 @@ public class ItemProbabilityDistributor : MonoBehaviour
 
             i++;
             i = i % items.Count;
+            yield return wait;
         }
 
         if(itemChosen.name != itemDisplay.textBox.text)
         {
+            itemDisplay.textBox.text = itemChosen.name;
             itemChosen = FindItem(itemDisplay.textBox.text);
         }
 
