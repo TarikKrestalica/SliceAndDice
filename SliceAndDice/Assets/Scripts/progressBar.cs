@@ -7,49 +7,46 @@ using UnityEngine.Events;
 
 public class progressBar : MonoBehaviour
 {
-   
     private Slider slider;
-    /*public health_bar_script health;*/
-    
-    
-    public float fillspeed = 0.1f;
+    private float maxHealth;
+    private float curHealth;
+
+    public float fillSpeed;
     public static int slider_count = 0;
-    /*private float maxhealth = 100f*/
-    private void Awake()
-    {
-        slider = GetComponent<Slider>();
-    }
-  
 
     // Update is called once per frame
     void Update()
     {
-        if (slider.value < 1f && Input.GetKeyDown(KeyCode.Space))
+        if (!slider || slider.value == 0)
         {
-            slider.value += fillspeed * Time.deltaTime;
+            GameManager.player.GoToNextPoint();
+            GameObject.FindGameObjectWithTag("ItemDisplay").SetActive(false);
+            Destroy(this.transform.parent.parent.gameObject);
+            return;
         }
 
-      
-        if (slider.value == slider.maxValue)
+        // Space bar near area
+        if (slider.value > slider.minValue && Input.GetKeyDown(KeyCode.RightShift))
         {
-            slider_count = 1;
-            SceneManager.LoadScene(6);
-           
-            
+            slider.value -= fillSpeed * Time.deltaTime;
         }
-
-       
-        
     }
 
-    public void ResetGame()
+    public void SetUpTheSlider()
     {
-        SceneManager.LoadScene(5);
+        slider = GetComponent<Slider>();
+        Obstacle curRef = GameManager.player.GetCurrentObstacle();
+        if (!curRef)
+        {
+            Debug.LogError("No object has been passed");
+            return;
+        }
+
+
+        float newFillSpeed = FindObjectOfType<ItemProbabilityDistributor>().GetSelectedItem().fillSpeed;
+        fillSpeed = newFillSpeed;
+        maxHealth = curRef.GetHealthValue();
+        curHealth = maxHealth;
+        slider.value = curHealth;
     }
-
-    
-
-   
-
-    
 }
