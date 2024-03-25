@@ -9,6 +9,7 @@ TagManager:
   - Goblin Pop Up
   - Goblin
   - ItemDisplay
+  - GoblinDisplay
   layers:
   - Default
   - TransparentFX
