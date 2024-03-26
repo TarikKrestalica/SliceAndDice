@@ -28,4 +28,10 @@ public class BehaviorManager : MonoBehaviour
     {
         return isComplaint;
     }
+
+    public static void Reset()
+    {
+        isComplaint = false;
+        isCompliment = false;
+    }
 }

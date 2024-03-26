@@ -41,6 +41,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        GameObject.FindGameObjectWithTag("GoblinDisplay").transform.localPosition = new Vector3(700, -150, 0);
         currentLine = 0;
         isStoryFinished = false;
         sentences.Clear();  // Remove old story
@@ -130,6 +131,7 @@ public class DialogueManager : MonoBehaviour
     // Go back to menu, and reset properties
     public void EndDialogueSession()
     {
+        GameObject.FindGameObjectWithTag("GoblinDisplay").transform.localPosition = new Vector3(450, 375, 0);
         GameManager.gameManager.itemProbabilityDistributor.enabled = true;
         GameManager.gameManager.itemProbabilityDistributor.StartSelection();
         curDialogueBox.box.transform.parent.gameObject.SetActive(false);
