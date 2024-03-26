@@ -75,8 +75,10 @@ public class ItemProbabilityDistributor : MonoBehaviour
         string targetClassifier = "";
         if (BehaviorManager.IsCompliment())
             targetClassifier = "Compliment";
-        else
+        else if (BehaviorManager.IsComplaint())
             targetClassifier = "Complaint";
+        else
+            targetClassifier = "Neutral";
 
         int i = 0;
         while(i < items.Count)
@@ -87,11 +89,18 @@ public class ItemProbabilityDistributor : MonoBehaviour
                 if (items[i].probability >= 100)
                     items[i].probability = 100;
             }
-            else
+            else 
             {
-                items[i].probability -= 10;
-                if (items[i].probability <= 0)
-                    items[i].probability = 0;
+                if (targetClassifier == "Neutral")
+                {
+                    items[i].probability = 50;
+                }
+                else
+                {
+                    items[i].probability -= 10;
+                    if (items[i].probability <= 0)
+                        items[i].probability = 0;
+                }  
             }
 
             i++;

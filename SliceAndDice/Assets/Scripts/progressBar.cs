@@ -21,7 +21,7 @@ public class progressBar : MonoBehaviour
         {
             GameManager.player.GoToNextPoint();
             GameObject.FindGameObjectWithTag("ItemDisplay").SetActive(false);
-            GameObject.FindGameObjectWithTag("GoblinDisplay").transform.localPosition = new Vector3(-750, -175, 0);
+            GameObject.FindGameObjectWithTag("GoblinDisplay").transform.localPosition = new Vector3(-750, -90, 0);
             GameObject.FindGameObjectWithTag("GoblinDisplay").SetActive(false);
             Destroy(this.transform.parent.parent.gameObject);
             return;
@@ -43,7 +43,6 @@ public class progressBar : MonoBehaviour
             Debug.LogError("No object has been passed");
             return;
         }
-
 
         float newFillSpeed = FindObjectOfType<ItemProbabilityDistributor>().GetSelectedItem().fillSpeed;
         BehaviorManager.Reset();

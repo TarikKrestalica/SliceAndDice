@@ -9,6 +9,7 @@ public class GoblinDisplay : MonoBehaviour
     [SerializeField] private List<Texture> sadTextures;
     [SerializeField] private List<Texture> mediumTextures;
     [SerializeField] private List<Texture> happyTextures;
+    [SerializeField] private List<Texture> decisionTimeTextures;
 
     private RawImage m_rawImage;
 
@@ -28,7 +29,6 @@ public class GoblinDisplay : MonoBehaviour
 
     IEnumerator Play()
     {
-        
         WaitForSeconds wait = new WaitForSeconds(timeLapse);
         while (true)
         {
@@ -55,6 +55,13 @@ public class GoblinDisplay : MonoBehaviour
             textures = mediumTextures;
         }
 
+        StartCoroutine(Play());
+    }
+
+    public void PlayDecisionTimeTextures()
+    {
+        StopAllCoroutines();
+        textures = decisionTimeTextures;
         StartCoroutine(Play());
     }
 }
