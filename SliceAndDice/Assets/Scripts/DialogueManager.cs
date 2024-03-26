@@ -132,6 +132,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogueSession()
     {
         GameObject.FindGameObjectWithTag("GoblinDisplay").transform.localPosition = new Vector3(450, 375, 0);
+        FindObjectOfType<GoblinDisplay>().PlayDecisionTimeTextures();
         GameManager.gameManager.itemProbabilityDistributor.enabled = true;
         GameManager.gameManager.itemProbabilityDistributor.StartSelection();
         curDialogueBox.box.transform.parent.gameObject.SetActive(false);
