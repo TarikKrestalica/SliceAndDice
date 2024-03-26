@@ -8,6 +8,7 @@ public class EndGame : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(3);
         }
     }

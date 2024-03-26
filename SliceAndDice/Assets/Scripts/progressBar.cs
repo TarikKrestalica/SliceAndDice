@@ -19,6 +19,7 @@ public class progressBar : MonoBehaviour
     {
         if (!slider || slider.value == 0)
         {
+            Cursor.lockState = CursorLockMode.None;
             GameManager.player.GoToNextPoint();
             GameObject.FindGameObjectWithTag("ItemDisplay").SetActive(false);
             GameObject.FindGameObjectWithTag("GoblinDisplay").transform.localPosition = new Vector3(-750, -90, 0);
@@ -44,6 +45,7 @@ public class progressBar : MonoBehaviour
             return;
         }
 
+        Cursor.lockState = CursorLockMode.Locked;
         float newFillSpeed = FindObjectOfType<ItemProbabilityDistributor>().GetSelectedItem().fillSpeed;
         BehaviorManager.Reset();
         fillSpeed = newFillSpeed;
